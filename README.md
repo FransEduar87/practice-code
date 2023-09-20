@@ -1,2 +1,87 @@
 # practice-code
 practicas de java script
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea</title>
+    <style>
+        /* Estilos para la página */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .seccion {
+            padding: 20px;
+        }
+        .producto {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            max-width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección de Inicio -->
+    <div class="seccion" id="inicio">
+        <h1>Bienvenido a nuestra Tienda en Línea</h1>
+        <p>Descubre una amplia selección de productos.</p>
+    </div>
+
+    <!-- Sección de Catálogo de Productos -->
+    <div class="seccion" id="catalogo">
+        <h2>Catálogo de Productos</h2>
+        <div class="producto">
+            <h3>Producto 1</h3>
+            <p>Descripción del producto 1.</p>
+            <button onclick="agregarAlCarrito('Producto 1')">Agregar al Carrito</button>
+        </div>
+        <div class="producto">
+            <h3>Producto 2</h3>
+            <p>Descripción del producto 2.</p>
+            <button onclick="agregarAlCarrito('Producto 2')">Agregar al Carrito</button>
+        </div>
+    </div>
+
+    <!-- Sección de Carrito de Compras -->
+    <div class="seccion" id="carrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="listaCarrito"></ul>
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div class="seccion" id="contacto">
+        <h2>Contacto</h2>
+        <p>Contáctanos para cualquier consulta o comentario.</p>
+    </div>
+
+    <script>
+        // JavaScript para el Carrito de Compras
+        let carrito = [];
+
+        function agregarAlCarrito(producto) {
+            carrito.push(producto);
+            actualizarListaCarrito();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            actualizarListaCarrito();
+        }
+
+        function actualizarListaCarrito() {
+            const listaCarrito = document.getElementById('listaCarrito');
+            listaCarrito.innerHTML = '';
+            carrito.forEach(producto => {
+                const itemCarrito = document.createElement('li');
+                itemCarrito.textContent = producto;
+                listaCarrito.appendChild(itemCarrito);
+            });
+        }
+    </script>
+</body>
+</html>
